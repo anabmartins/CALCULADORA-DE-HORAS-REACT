@@ -19,29 +19,37 @@ function App() {
 
     setResult(`${resH}:${resM}`);
   }
-function soma() {
-  let resH = hi + hf;
-  let resM = mi + mf;
 
-  while (resM >= 60) {
-    resM -= 60;
-    resH++;
+  function subtrai() {
+    let tempHi = hi;
+    let tempHf = hf;
+    let tempMi = mi;
+    let tempMf = mf;
+    let resH = 0;
+
+    while (tempHi > 1) {
+      tempMi += 60;
+      tempHi--;
+    }
+
+    while (tempHf > 1) {
+      tempMf += 60;
+      tempHf--;
+    }
+
+    let resM = mi - mf;
+
+    if (resM < 0) {
+      resM *= -1;
+    }
+
+    while (resM > 59) {
+      resH++;
+      resM -= 60;
+    }
+
+    setResult(`${resH}:${resM}`);
   }
-
-  setResult(`${resH}:${resM}`);
-}
-
-function subtrai() {
-  let resH = hi - hf;
-  let resM = mi - mf;
-
-  while (resM < 0) {
-    resM += 60;
-    resH--;
-  }
-
-  setResult(`${resH}:${resM}`);
-}
 
   return (
     <div style={{ textAlign: 'center' }}>
